@@ -73,7 +73,7 @@ function() {
 //            	    	  btnType : 'label',
             	    	  xtype : 'label',
             	    	  text: '我的待办',
-            	    	  style : 'background-color:lightblue;font-weight:bold;',
+            	    	  style : 'background-color:rgb(166, 221, 252);font-weight:bold;',
             	    	  width: 100,
             	    	  padding : '5 0 0 15',
             	    	  height : '100%',
@@ -255,7 +255,7 @@ function() {
                     groupField : 'status',
                     fields : ['identifier', 'status', 'subject', 'sender', 'date', 'placeholder'],
                     listeners : {
-                        load : function(store) {
+                        load : function(store) {/*
                             if(store.groupField == 'status') {
                                 var STATUSES = ['未读文档传送', '未读文档抄送传送件'];
                                 for(var i = 0; i < STATUSES.length; i++) {
@@ -269,7 +269,7 @@ function() {
 
                                 store.sort();
                             }
-                        }
+                        */}
                     },
                     data : [{
                         status : '未读文档传送',
@@ -430,7 +430,7 @@ function() {
 	                	 },{
 	                		 xtype:'toolbar',
 	                		// cls:'zghuserpanel',
-	                		 style: 'background-color:black;',
+//	                		 style: 'background-color:black;',
 //	                		 cls : 'x-toolbar-yc',
 	                		 width:'85%',
 	                		 height:'100%',
@@ -443,10 +443,10 @@ function() {
                 			    borderStyle: 'solid',
 //                			    background-color : 'black',
                 			},
-                			 html: '<style>.ddd{background-color:black;} li {list-style:none; float:left;}</style>'+
- 	                		'<div class="ddd"><ul ><li style="margin:-15px 15px 0 20px" align="center"><p><span>10</span><br>待办</p></li>'+
- 	                		 '<li style="margin:-15px 15px 0 0" align="center"><p><span>0</span><br>处理中</p> </li>'+
- 	                		 '<li style="margin:-15px 15px 0 0" align="center"><p><span>5</span><br>收藏</p></li></ul></div>',
+                			 html: '<style>.ddd{background-color:"red";font-weight:bold;}p span {color:blue;} li {list-style:none; float:left;}</style>'+
+ 	                		'<div class="ddd"><ul ><li style="margin:-20px 20px 0 20px" align="center"><p><span>10</span><br>待办</p></li>'+
+ 	                		 '<li style="margin:-20px 20px 0 0" align="center"><p><span>0</span><br>处理中</p> </li>'+
+ 	                		 '<li style="margin:-20px 20px 0 0" align="center"><p><span>5</span><br>收藏</p></li></ul></div>',
 	                	 }
 	                   ],
 	                 }]

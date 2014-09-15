@@ -13,7 +13,7 @@ function() {
 //TODO add columns
     var tabs = Ext.create('Ext.tab.Panel', {
     	width: '100%',
-	    height: '100%',
+	    height: 'auto',
 	    activeTab: 0,
 	    tabPosition : 'top',
 	    bodyPadding: 10,
@@ -169,6 +169,7 @@ function() {
     bodyPadding : 0,
 	width : '20%',
 	height : '100%',
+	margin : '0 2 0 0',
 	items:[
 	       tabs,
            {  
@@ -199,7 +200,7 @@ function() {
                    },{
                 	   xtype : 'toolbar',
                 	   layout : {
-//                		 type :  'hbox',
+                		 type :  'hbox',
                 		 align : 'center',
                 	   },
                 	   items : [{
