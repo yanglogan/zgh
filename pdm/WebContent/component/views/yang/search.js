@@ -11,190 +11,154 @@ function() {
     FileExplorer.iconRootPath = 'static/images/filetypes/';
 
 //TODO add columns
-    var zghsearchPanel = Ext.create('Ext.panel.Panel', {
-        border : false,
-        //layout : 'border',
-        region : 'west',
-        //autoScroll : true,
-        bodyPadding : 0,
-//        margin : '0 10 0 0',
-//        	columnWidth : .2,
-      /*  layout : {
-        	type : 'vbox',
-        	align : 'center',
-        },*/
-    	width : '20%',
-    	items:[
-    	       {
-    	    	   xtype : 'toolbar',
-    	    	   defaults : {
-    	    		 padding : 0,
-    	    		 margin : 0,
-    	    		 height : 25,
-    	    	   },
-    	    	   items : [
-    	    	            {
-    	    	            	//xtype : 'button',
-    	    	            	btnType : 'info',
-    	    	            	text : '关键字搜索',
-    	    	            	width : '50%',
-    	    	            },
-    	    	            {
-    	    	            	//xtype : 'button',
-    	    	            	btnType : 'deepblue',
-    	    	            	text : '属性搜索',
-    	    	            	width : '49%',
-    	    	            }
-    	    	            ],
-    	    	 //buttons :  
-    	       },
-	           {  
-	               //title: 'General Info',  
+    var tabs = Ext.create('Ext.tab.Panel', {
+    	width: '100%',
+	    height: '100%',
+	    activeTab: 0,
+	    tabPosition : 'top',
+	    bodyPadding: 10,
+	    cls : '.x-tab-bar-strip',
+//	    headerCls : 'header-bg',
+        items: [
+                {
+ 	               title: '关键字检索',  
+ 	               xtype: 'form', 
+ 	               layout : {
+ 	            	 type : 'vbox',
+ 	            	 align : 'center',
+ 	               },
+ 	               defaults : {
+// 	            	 padding : '0, 20, 0, 20',  
+ 	            	 width : '80%',
+ 	            	
+ 	               },
+ 	               items: [
+                        {
+                     	 xtype : 'label',
+                     	 text : '项目代码：',
+                        },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   },
+ 	                   {
+                     	 xtype : 'label',
+                     	 text : '文件源码：',
+                        },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   },
+ 	                   {
+ 	                    	 xtype : 'label',
+ 	                    	 text : '文档名称：',
+ 	                   },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   },
+ 	                   {
+                     	 xtype : 'label',
+                     	 text : '中文标题：',
+ 	                   },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   }, 
+ 	                   {
+ 	                    	 xtype : 'label',
+ 	                    	 text : '英文标题：',
+   	                   },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   }, 
+ 	                   {
+                     	 xtype : 'label',
+                     	 text : '部分通用：',
+ 	                   },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   }, 
+ 	                   {
+ 	                    	 xtype : 'label',
+ 	                    	 text : '要根据属：',
+   	                   },
+ 	                   {  
+ 	                       xtype: 'textfield',  
+ 	                   }
+ 	               ],  
+ 	               buttons: [{
+ 	            	   btnType : 'info',
+ 	                   text : '搜索',
+ 	                   width : '100%',
+ 	               }]  
+ 	           
+                },
+                {
+	               title: '属性检索',  
 	               xtype: 'form', 
-	               //align : 'center',
+	               layout : {
+	 	            	 type : 'vbox',
+	 	            	 align : 'center',
+	 	               },
 	               defaults : {
-	            	 padding : '0, 20, 0, 20',  
+//	            	 padding : '0, 20, 0, 20',  
 	            	 width : '80%',
-	            	 //bodyStyle : {align:'center',},
 	               },
 	               items: [
-                       {
-                    	 xtype : 'label',
-                    	 text : '项目代码：',
-                       },
+                      {
+                   	 xtype : 'label',
+                   	 text : '属性1：',
+                      },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '项目代码',  
-	                       //value: 'Vitaliy',  
-	                       //allowBlank: false  
 	                   },
 	                   {
-                    	 xtype : 'label',
-                    	 text : '文件源码：',
-                       },
+                   	 xtype : 'label',
+                   	 text : '属性2：',
+                      },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '文件源码',  
-	                       //value: 'Khmurach',  
-	                       //allowBlank: false  
 	                   },
 	                   {
 	                    	 xtype : 'label',
-	                    	 text : '文档名称：',
+	                    	 text : '属性3：',
 	                   },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '文档名称',  
-	                       //value: 'Khmurach',  
-	                       //allowBlank: false  
 	                   },
 	                   {
-                    	 xtype : 'label',
-                    	 text : '中文标题：',
+                   	 xtype : 'label',
+                   	 text : '属性4：',
 	                   },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '中文标题',  
-	                       //value: 'Khmurach',  
-	                       //allowBlank: false  
 	                   }, 
 	                   {
 	                    	 xtype : 'label',
-	                    	 text : '英文标题：',
-  	                   },
+	                    	 text : '属性5：',
+ 	                   },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '英文标题',  
-	                       //value: 'Khmurach',  
-	                       //allowBlank: false  
 	                   }, 
 	                   {
-                    	 xtype : 'label',
-                    	 text : '部分通用：',
+                   	 xtype : 'label',
+                   	 text : '属性6：',
 	                   },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '部分通用',  
-	                       //value: 'Khmurach',  
-	                       //allowBlank: false  
 	                   }, 
 	                   {
 	                    	 xtype : 'label',
-	                    	 text : '要根据属：',
-  	                   },
+	                    	 text : '属性7：',
+ 	                   },
 	                   {  
 	                       xtype: 'textfield',  
-	                       //fieldLabel: '要根据属',  
-	                       //value: 'Khmurach',  
-	                       //allowBlank: false  
 	                   }
 	               ],  
 	               buttons: [{
 	            	   btnType : 'info',
 	                   text : '搜索',
 	                   width : '100%',
-	                   //action: 'save',  
-	                   //disabled: true  
 	               }]  
-	           },  
-	           {  
-	               xtype: 'form',  
-	               defaults : {
-  	            	 padding : '0 20 0 20', 
-  	            	 margin : '0 0 5 0',
-  	            	 width : '100%',
-  	            	 //bodyStyle : {align:'center',},
-  	               },
-	               items: [  
-	                       {
-	                    	 xtype : 'label',
-	                    	 text : '搜索选项：',
-	                       },
-	                   {  
-	                       xtype: 'combo',  
-	                       width : 197,
-	                       emptyText : '---请选择---',
-	                   },{
-	                	   xtype : 'toolbar',
-	                	   items : [{
-	                		   btnType : 'info',
-	                		   text : '保存',
-	                	   },{
-	                		   btnType : 'info',
-	                		   text : '取消',
-	                	   }],
-	                   } 
-	               ],  
-	           },{
-	        	   xtype : 'toolbar',
-	        	   defaults : {
-	        		 align : 'center',
-	        		 margin : '0 0 0 10',
-	        	   },
-	        	   style : {
-	        		 margin : '0 10 30 0',  
-	        	   },
-	        	   items : [{
-	        		   btnType : 'success',
-    	        	   text : '导出搜索结果',
-    	        	   width : '90%',
-	        	   }],
-        	}],
-    });
-    
-    var tabs = Ext.create('Ext.tab.Panel', {
-    	width: '100%',
-	    height: '100%',
-	    activeTab: 0,
-	    bodyPadding: 10,
-        items: [
-                {
-                    title: 'Tab 1',
-                    html : 'A simple tab'
-                },
-                {
-                    title: 'Tab 2',
-                    html : 'Another one'
+	           
+              
                 }
             ]
         });
@@ -204,6 +168,7 @@ function() {
     region : 'west',
     bodyPadding : 0,
 	width : '20%',
+	height : '100%',
 	items:[
 	       tabs,
            {  
@@ -212,7 +177,6 @@ function() {
 	            	 padding : '0 20 0 20', 
 	            	 margin : '0 0 5 0',
 	            	 width : '100%',
-	            	 //bodyStyle : {align:'center',},
 	               },
                items: [  
                        {
@@ -222,33 +186,37 @@ function() {
                    {  
                        xtype: 'combo',  
                        width : 197,
-                       emptyText : '---请选择---',
+                       emptyText : '----请选择----',
+                       store : Ext.create('Ext.data.Store',{
+                    	   fields : ['id','name'],
+                    	   data : [
+                	           {'id':1,'name':'XX1'},
+                	           {'id':2,'name':'XX2'},
+                	           {'id':3,'name':'XX3'},
+            	           ],
+                       }),
+                       displayField : 'name',
                    },{
                 	   xtype : 'toolbar',
                 	   layout : {
-                		 type :  'hbox',
+//                		 type :  'hbox',
                 		 align : 'center',
                 	   },
                 	   items : [{
                 		   btnType : 'info',
                 		   text : '保存',
-                	   },{
+                		   margin : '0 0 0 40',
+                	   },'->',{
                 		   btnType : 'info',
                 		   text : '取消',
+                		   margin : '0 60 0 0',
                 	   }],
                    } 
                ],  
            },{
         	   xtype : 'toolbar',
         	   defaults : {
-        		 
         		 margin : '0 0 0 10',
-        	   },
-        	   defaultAlign : {
-        		   align : 'center',
-        	   },
-        	   style : {
-//        		 margin : '0 10 30 0',  
         	   },
         	   items : [{
         		   btnType : 'success',
@@ -276,11 +244,6 @@ function() {
         }]
     });
     
-    var objList1 = Ext.create('FileExplorer.TableViewPanel', {
-    	region : 'center',
-    });
-   
-    
     var objList = Ext.create('FileExplorer.ObjList', {
         region : 'center',
 //        i18nFunc : msg,
@@ -292,14 +255,14 @@ function() {
             }
         },
         viewConfigs : {
-           /* detailed : {
+            detailed : {
                 columns : [{
                     xtype : 'fethumbnailcolumn'
                 }, {
                     xtype : 'fedetailcolumn',
                     flex : 1
                 }],
-            },*/
+            },
             table : {
                 columns : [{
                     xtype : 'feiconcolumn'

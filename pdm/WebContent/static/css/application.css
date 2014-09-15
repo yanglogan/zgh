@@ -65,7 +65,7 @@
 	text-shadow: white 0px 1px 1px;
 }
 .menubar {
-	background-image: url(../images/menubar-bg2.gif);
+	background-image: url(../images/menubar-bg2.gif	);
 	padding-top: 0px;
 	padding-bottom: 0px;
 	z-index : 910;
@@ -148,6 +148,7 @@
 	color : #707070!important;
 	text-shadow : white 0px 1px 1px;
 }
+
 /*label*/
 .btn-label {
 	background-image: none !important;
@@ -332,14 +333,14 @@
 	margin-right: 0;
 }
 .nav-item .navi-item-btn-text {
-	color: #507CAD;
+	color: white;
 	font-weight: bold;
 }
 .navi-block, .navi-item-btn-text, .title-label {
 	font-family: '微软雅黑', 'Microsoft YaHei', Helvetica, SimSun, arial, freesans, clean, sans-serif !important;
 }
 .nav-item-over {
-	background-color: #507CAD;
+	background-color: #0770A0;
 	/*background-image : url(../images/nav-item-over.png)!important;*/
 	border-left: 1px #FF7D18 solid;
 	border-right: 1px #FF7D18 solid;
@@ -422,6 +423,20 @@ span.hyperlink:hover {
 	border-bottom: 1px #E0E0E0 solid;
 	font-size: 15px;
 	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(white),to(#F9F9F9));
+}
+/* tab panel */
+.x-panel-body-default {
+	background: white;
+	border-color: #157fcc;
+	color: black;
+	font-size: 13px;
+	font-size: normal;
+	border-width: 1px;
+	border-style: solid;
+}
+.x-horizontal-box-overflow-body {
+	float : left;
+	background-image : url(../images/menubar-bg.png);
 }
 /* EXTJS NEPTUNE CSS PATCH */
 .x-view-selector {
@@ -569,7 +584,7 @@ table.x-column td.x-form-item-body {
 	background: -webkit-gradient(linear, 0% 0, 0% 100%, from(#f3f3f3),to(#d3d3d3));
 }
 .x-tab-bar-strip {
-	background-color: #d3d3d3;
+	background-color: #f3f3f3;
 }
 .quota-reload {
 	width: 16px;

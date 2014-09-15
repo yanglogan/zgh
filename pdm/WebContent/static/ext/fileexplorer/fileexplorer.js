@@ -249,6 +249,15 @@ Ext.define('FileExplorer.ObjList', {
 			});
 		}
 		
+		var store1 = Ext.create('Ext.data.Store', {
+		    fields: ['id','name'],
+		    data : [
+		        {'id':1,"name":"按上传时间顺序"},
+		        {'id':2,"name":"按作者名字顺序"},
+		        {'id':3,"name":"按文件名称顺序"}
+		    ]
+		});
+		
 		this.tbar = Ext.create('Ext.toolbar.Toolbar', {
 			//cls : 'fe-toolbar fe-toolbar-bottom',
 			//store : this.store,
@@ -265,13 +274,26 @@ Ext.define('FileExplorer.ObjList', {
 				width : 170,
 				labelWidth : 35,
 				fieldLabel : '排序:',
-				emptyText : '按上传时间排序',
+				store : store1,
+				value : 1,
+				displayField:'name',
+			    valueField:'id',
 			},{
 				xtype : 'combo',
-				width : 110,
-				labelWidth : 55,
+				width : 140,
+				labelWidth : 60,
 				fieldLabel : '每页显示:',
-				emptyText : '10',
+				store : Ext.create('Ext.data.Store', {
+				    fields: ['id','name'],
+				    data : [
+				        {'id':1,"name":"10"},
+				        {'id':2,"name":"20"},
+				        {'id':3,"name":"30"},
+				    ]
+				}),
+				value : 1,
+				displayField : 'name',
+				valueField : 'id',
 			}],
 		});
 		

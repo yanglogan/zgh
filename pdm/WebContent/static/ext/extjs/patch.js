@@ -314,6 +314,118 @@ Ext.override(Ext.button.Button, {
 	btnType : 'common',
 	initComponent : function() {
 
+		if (!(this instanceof Ext.tab.Tab)) {
+			if (this.btnType) {
+				this.cls = 'special-btn btn-' + this.btnType;
+				this.overCls = 'over-' + this.btnType;
+				this.focusCls = 'over-' + this.btnType;
+				this.pressedCls = 'pressed-' + this.btnType;
+				this.textCls = 'x-btn-text-' + this.btnType;
+				this.pressedTextCls = 'x-btn-pressed-text-' + this.btnType;
+				this.menuActiveCls = 'menu-active-' + this.btnType;
+			}
+	
+			if (this.actionBtn) {
+				this.minWidth = 70;
+			}
+			
+			if (this.closeWinBtn) {
+				this.handler = function() {
+					try {
+						this.ownerCt.ownerCt.close();
+					} catch (e) {}
+				}
+			}
+		}
+		this.callParent();
+	},
+	toggle: function(state, suppressEvent) {
+		if (!(this instanceof Ext.tab.Tab)) {
+	        var me = this;
+	        state = state === undefined ? !me.pressed: !!state;
+	        if (state !== me.pressed) {
+	            if (me.rendered) {
+	                me[state ? 'addClsWithUI': 'removeClsWithUI'](me.pressedCls);
+	                Ext.fly(me.el.query('.x-btn-inner')[0])[state ? 'addCls' : 'removeCls'](this.pressedTextCls);
+	            }
+	            me.pressed = state;
+	            if (!suppressEvent) {
+	                me.fireEvent('toggle', me, state);
+	                Ext.callback(me.toggleHandler, me.scope || me, [me, state]);
+	            }
+	        }
+		}
+        return me;
+   },
+	onMouseDown: function(e) {
+		if (!(this instanceof Ext.tab.Tab)) {
+	        var me = this;
+	
+	        if (Ext.isIE) {
+	            me.getFocusEl().focus();
+	        }
+	
+	        if (!me.disabled && e.button === 0) {
+	            Ext.button.Manager.onButtonMousedown(me, e);
+	            me.addClsWithUI(me.pressedCls);
+	            Ext.fly(this.el.query('.x-btn-inner')[0]).addCls(this.pressedTextCls);
+	        }
+		}
+    },
+    onMouseUp: function(e) {
+    	if (!(this instanceof Ext.tab.Tab)) {
+	        var me = this;
+	
+	        // If the external mouseup listener of the ButtonManager fires after the button has been destroyed, ignore.
+	        if (!me.isDestroyed && e.button === 0) {
+	            if (!me.pressed) {
+	                me.removeClsWithUI(me.pressedCls);
+	                Ext.fly(this.el.query('.x-btn-inner')[0]).removeCls(this.pressedTextCls);
+	            }
+	        }
+    	}
+    },
+	afterRender : function() {
+		if (!(this instanceof Ext.tab.Tab)) {
+			if (this.btnType) {
+				Ext.fly(this.el.query('.x-btn-inner')[0]).addCls(this.textCls);
+				
+				if (Ext.isIE7 || Ext.isIE8) {
+					this.el.dom.style.cssText = 'border-width:1px!important;';
+					Ext.each(this.el.query('*[class^="x-frame"]'), function(ele) {
+						Ext.fly(ele).setStyle('background-image', 'none');
+						Ext.fly(ele).setStyle('background-color', 'transparent');
+					});
+	
+				}
+			}
+			
+			//button group
+			if (this.btnPosition) {
+				
+				if (this.btnPosition == 'first' || this.btnPosition == 'middle') {
+					this.el.setStyle('margin-right', '-1px');
+					this.el.setStyle('border-top-right-radius', '0px');
+					this.el.setStyle('border-bottom-right-radius', '0px');
+				}
+				
+				if (this.btnPosition == 'middle' || this.btnPosition == 'last') {
+					this.el.setStyle('border-top-left-radius', '0px');
+					this.el.setStyle('border-bottom-left-radius', '0px');
+				}
+				
+			}
+		}
+		
+		this.callParent();
+	}
+});
+
+//===================YangChao======================================
+Ext.override(Ext.tab.Tab, {
+	btnType : 'label',
+	initComponent : function() {
+
 //		if (!(this instanceof Ext.tab.Tab)) {
 			if (this.btnType) {
 				this.cls = 'special-btn btn-' + this.btnType;
@@ -418,6 +530,25 @@ Ext.override(Ext.button.Button, {
 		}
 		
 		this.callParent();
+	}
+});
+
+Ext.override(Ext.tab.Panel, {
+	headerCls : null,
+	afterRender : function() {
+		if (this.headerCls) {
+			Ext.fly(this.el.query('.x-panel-header-default')[0]).addCls(this.headerCls);
+			Ext.fly(this.el.query('.x-header-text')[0]).addCls(this.headerCls + '-text');
+		}
+
+		this.callParent();
+	},
+	setHTML : function(html) {
+		this.getInnerEl().setHTML(html);
+		this.doLayout();
+	},
+	getInnerEl : function() {
+		return this.body.child('span').child('div');
 	}
 });
 

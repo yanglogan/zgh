@@ -147,7 +147,8 @@ function() {
 					 xtype : 'fethumbnailcolumn' 
 				 },
                  { 
-					 xtype : 'fedetailcolumn', flex : 1 
+					 xtype : 'fedetailcolumn',
+					 flex : 1 
 				 }],
              },
 			 
