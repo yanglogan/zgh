@@ -269,7 +269,7 @@ function() {
 
             },
             onUserClick : function(user) {
-                //alert('you have clicked a user:' + user);
+                alert('you have clicked a user:' + user);
             }
         },
         store : store,
