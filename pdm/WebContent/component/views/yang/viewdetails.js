@@ -9,7 +9,7 @@ function() {
     var object;
     $.ajax({
         type : 'GET',
-        url : Utils.getCDAUrl('ObjectDetail', 'getObjectDetail') + '?objectId=ab9858c0-07bd-4404-b402-22849b087478',// + Utils.getAnchorParams().objectId,
+        url : Utils.getCDAUrl('ObjectDetail', 'getObjectDetail') + '?objectId=9f874185-c43e-4af9-a854-9ae6d311040d',// + Utils.getAnchorParams().objectId,
         async : false,
         success : function(d) {
             data = Ext.decode(d);
